@@ -13,7 +13,7 @@ node {
       sh "docker build -t gcr.io/adopt-continuous-integration/terraform:${tag_id} ."
     }
     stage("test") {
-      sh "docker run gcr.io/adopt-continuous-integration/terraform:${tag_id}"
+      sh "docker run gcr.io/adopt-continuous-integration/terraform:${tag_id} version"
     }
     stage("publish") {
       if(tag_id != commit_id){
