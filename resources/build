@@ -1,0 +1,19 @@
+#!/bin/sh
+###
+# Terraform version
+###
+TERRAFORM_VERSION=0.8.3
+###
+# Adding curl
+###
+apk add --update curl
+###
+# Installing terraform
+###
+curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin
+###
+# Cleaning image
+###
+rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+apk del curl
