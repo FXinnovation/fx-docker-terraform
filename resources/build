@@ -6,7 +6,7 @@ TERRAFORM_VERSION=0.8.4
 ###
 # Adding curl
 ###
-apk add --update curl
+apk add --no-cache curl
 ###
 # Installing terraform
 ###
