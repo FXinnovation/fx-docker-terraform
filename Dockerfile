@@ -1,6 +1,6 @@
 FROM alpine:3.5
 
-MAINTAINER fxinnovation
+MAINTAINER fxinnovation <cloudsquad@fxinnovation.com>
 
 ENV TERRAFORM_VERSION=0.8.6
 
