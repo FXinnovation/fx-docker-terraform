@@ -30,10 +30,12 @@ node {
     sh "docker inspect fxinnovation/terraform:${tag_id}"
   }
   stage("publish") {
-    if(tag_id != commit_id){
+    if(tag_id != commit_id && ( "${tag_id}" =~ [0-9]*\.[0-9]*\.[0-9]*"").matches()){
 //      withCredntials(''){
 //        sh "docker login -u -p"
 //        sh "docker push fxinnovation/terraform:${tag_id}"
+//        sh "docker tag fxinnovation/terraform:${tag_id} fxinnovation/terraform:latest"
+//        sh "docker push fxinnovation/terraform:latest"
 //      }
     }else{
       sh 'echo "This is not a tagged version, skipping publishing"'
