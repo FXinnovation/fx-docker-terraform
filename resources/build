@@ -13,3 +13,8 @@ unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin
 # Cleaning image
 ###
 rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+apk del curl
+###
+# Installing ca-certificates as dependency of terraform
+###
+apk add --no-cache ca-certificates
