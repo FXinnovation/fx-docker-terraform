@@ -1,28 +1,32 @@
 node {
-    stage('checkout') {
-      git url: "git@gitlab.com:adopt-docker/terraform.git", credentialsId: 'bbfe8ee7-b4a0-4d6e-a3dc-9a30aefd3902'
-      commit_id = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
-      tag_id = sh(returnStdout: true, script: "git describe --tags --exact-match || git rev-parse HEAD").trim()
-      println commit_id
-      println tag_id
+  stage('checkout') {
+    checkout scm
+    commit_id = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
+    tag_id = sh(returnStdout: true, script: "git describe --tags --exact-match || git rev-parse HEAD").trim()
+  }
+  stage('pre-build') {
+    sh 'gcloud --version && docker --version'
+  }
+  stage("build") {
+    sh "docker build 
+         --label "org.label-schema.vcs-ref"="${commit_id}"
+         --label "org.label-schema.version"="${tag_id}"
+         --label "org.label-schema.build-date"="\$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+         --label "org.label-schema.usage"="${scm.url}/src?at=${tag_id}"
+         -t fxinnovation/terraform:${tag_id} ."
+  }
+  stage("test") {
+    sh "docker run fxinnovation/terraform:${tag_id} version"
+    sh "docker inspect fxinnovation/terraform:${tag_id}"
+  }
+  stage("publish") {
+    if(tag_id != commit_id){
+//      withCredntials(''){
+//        sh "docker login -u -p"
+//        sh "docker push fxinnovation/terraform:${tag_id}"
+//      }
+    }else{
+      sh 'echo "This is not a tagged version, skipping publishing"'
     }
-    stage('pre-build') {
-      sh 'gcloud --version && docker --version'
-    }
-    stage("build") {
-      sh "docker build -t gcr.io/adopt-continuous-integration/terraform:${tag_id} ."
-    }
-    stage("test") {
-      sh "docker run gcr.io/adopt-continuous-integration/terraform:${tag_id} version"
-    }
-    stage("publish") {
-      if(tag_id != commit_id){
-        sh "gcloud docker -- push gcr.io/adopt-continuous-integration/terraform:${tag_id}"
-      }else{
-        sh 'echo "This is not a tagged version, skipping publishing"'
-      }
-    }
-    stage("cleaning") {
-      sh "docker images |grep \"gcr.io/adopt-continuous-integration/terraform\" |grep \"${tag_id}\" | awk '{print \$3}' | xargs docker rmi -f"
-    }
+  }
 }
