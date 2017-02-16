@@ -8,7 +8,7 @@ We do publish a latest tag for this image since it is a build image. It allows o
 
 If you want to run a specific version of terraform, please have a look at the other available tags.
 
-Our docker tags will follow the terraform release versions since there is only terraform in the container.
+Our tag will no longer follow the terraform releases, in order to know which terraform version is in what build, you can alway do a `docker inspect fxinnovation/terraform:[TAG]`. You'll find the details in the labels of the docker image.
 
 ## Usage
 ```
