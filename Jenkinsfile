@@ -12,7 +12,7 @@ node {
          --label \"org.label-schema.vcs-ref\"=\"${commit_id}\" \
          --label \"org.label-schema.version\"=\"${tag_id}\" \
          --label \"org.label-schema.build-date\"=\"\$(date -u +\"%Y-%m-%dT%H:%M:%SZ\")\" \
-         --label \"org.label-schema.usage\"=\"${scm.getUserRemoteConfigs()[0].getUrl()}/src?at=${tag_id}\" \
+         --label \"org.label-schema.usage\"=\"https://bitbucket.org/fxadmin/public-common-docker-terraform/src?at=${tag_id}\" \
          -t fxinnovation/terraform:${tag_id} ."
   }
   stage("test") {
