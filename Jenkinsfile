@@ -46,7 +46,7 @@ node {
           usernameVariable: 'docker_username')
       ]) {
         // Login to docker hub
-        sh "docker login -u ${docker_username} -p ${docker_password}"
+        sh "docker login -u ${docker_username} -p '${docker_password}'"
         // Tagging this image as latest
         sh "docker tag fxinnovation/terraform:${tag_id} fxinnovation/terraform:test"
         // Push image as tagged image
