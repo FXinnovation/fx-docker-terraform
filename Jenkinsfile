@@ -35,7 +35,6 @@ node {
     stage("test") {
       // Testing Image Works
       sh "docker run ${dockerhub_repo}:${tag_id} version"
-      sh "docker run ${dockerhub_repo}:${tag_id} --help"
       sh "docker inspect ${dockerhub_repo}:${tag_id}"
     }
   }
