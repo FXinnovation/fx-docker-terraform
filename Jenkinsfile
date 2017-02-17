@@ -1,4 +1,5 @@
 node {
+  dockerhub_repo = 'fxinnovation/terraform'
   ansiColor('xterm') {
     stage('checkout') {
       // Checking out scm
@@ -30,11 +31,11 @@ node {
            --label \"org.label-schema.version\"=\"${tag_id}\" \
            --label \"org.label-schema.build-date\"=\"\$(date -u +\"%Y-%m-%dT%H:%M:%SZ\")\" \
            --label \"org.label-schema.usage\"=\"${scm_url}/src?at=${tag_id}\" \
-           -t fxinnovation/terraform:${tag_id} ."
+           -t ${dockerhub_repo}:${tag_id} ."
     }
     stage("test") {
       // Testing Image Works
-      sh "docker run fxinnovation/terraform:${tag_id} version"
+      sh "docker run ${dockerhub_repo}:${tag_id} version"
     }
     stage("publish") {
       // Checking if this is a tagged version
@@ -47,13 +48,13 @@ node {
             usernameVariable: 'docker_username')
         ]) {
           // Login to docker hub
-          sh "docker login -u ${docker_username} -p '${docker_password}'"
+          sh "docker login -u '${docker_username}' -p '${docker_password}'"
           // Tagging this image as latest
-          sh "docker tag fxinnovation/terraform:${tag_id} fxinnovation/terraform:test"
+          sh "docker tag ${dockerhub_repo}:${tag_id} ${dockerhub_repo}:latest"
           // Push image as tagged image
-  //        sh "docker push fxinnovation/terraform:${tag_id}"
+          sh "docker push ${dockerhub_repo}:${tag_id}"
           // Push image using latest tag
-          sh "docker push fxinnovation/terraform:test"
+          sh "docker push ${dockerhub_repo}:latest"
         }
       }else{
         sh 'echo "This is not a tagged version, skipping publishing"'
