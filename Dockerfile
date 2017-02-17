@@ -2,6 +2,10 @@ FROM alpine:3.5
 
 ENV TERRAFORM_VERSION=0.8.7
 
+ARG BUILD_DATE \
+    VCS_REF \
+    VERSION
+
 VOLUME /data
 
 ADD ./resources /resources
@@ -21,4 +25,8 @@ LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.vcs-url"="https://bitbucket.org/fxadmin/public-common-docker-terraform" \
       "org.label-schema.vendor"="FXinnovation" \
       "org.label-schema.schema-version"="1.0.0-rc.1" \
-      "org.label-schema.applications.terraform.version"=$TERRAFORM_VERSION
+      "org.label-schema.applications.terraform.version"=$TERRAFORM_VERSION \
+      "org.label-schema.vcs-ref"=$VCS_REF \
+      "org.label-schema.version"=$VERSION \
+      "org.label-schema.build-date"=$BUILD_DATE \
+      "org.label-schema.usage"="docker run --rm $(pwd):/data fxinnovation/terraform help"
