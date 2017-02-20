@@ -24,10 +24,6 @@ node {
       stage('pre-build') {
         // Verifying docker is up and running
         sh 'docker --version && docker images'
-        sh 'scm > env.txt' 
-        for (String i : readFile('env.txt').split("\r?\n")) {
-          println i
-        }
       }
       stage("build") {
         // Building Docker Image
@@ -42,30 +38,23 @@ node {
         sh "docker run ${dockerhub_repo}:${tag_id} version"
         sh "docker inspect ${dockerhub_repo}:${tag_id}"
       }
-      stage("notify") {
-        hipchatSend (
-          color: 'GREEN',
-          credentialId: 'jenkins-hipchat-token',
-          message: "Job Success: ${JOB_NAME} (<a href=\"${BUILD_URL}\">Open</a>)",
-          room: '942680',
-          notify: false,
-          sendAs: 'New-Jenkins',
-          server: 'api.hipchat.com',
-          v2enabled: false
-        )
-      }
     }
   }catch (error){
-    hipchatSend (
-      color: 'RED',
-      credentialId: 'jenkins-hipchat-token',
-      message: "Job Failed: ${JOB_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br />Error:<br /><pre>${error}</pre>",
-      room: '942680',
-      notify: true,
-      sendAs: 'New-Jenkins',
-      server: 'api.hipchat.com',
-      v2enabled: false
-    )
     throw (error)
+  }finally {
+    stage("notify") {
+      hipchatSend (
+        color: 'GREEN',
+        credentialId: 'jenkins-hipchat-token',
+        message: "Job Name: ${JOB_BASE_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br /> \
+                  Job Status: ${currentBuild.result} \
+                  Job Duration: ${currentBuild.duration}",
+        room: '942680',
+        notify: false,
+        sendAs: 'New-Jenkins',
+        server: 'api.hipchat.com',
+        v2enabled: false
+      )
+    }
   }
 }
