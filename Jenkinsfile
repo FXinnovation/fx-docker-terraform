@@ -37,6 +37,7 @@ node {
         // Testing Image Works
         sh "docker run ${dockerhub_repo}:${tag_id} version"
         sh "docker inspect ${dockerhub_repo}:${tag_id}"
+        sh "foo bar titi"
       }
       stage("notify") {
         hipchatSend (
