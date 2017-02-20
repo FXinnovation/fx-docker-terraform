@@ -42,19 +42,17 @@ node {
   }catch (error){
     throw (error)
   }finally {
-    stage("notify") {
-      hipchatSend (
-        color: 'GREEN',
-        credentialId: 'jenkins-hipchat-token',
-        message: "Job Name: ${JOB_BASE_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br /> \
-                  Job Status: ${currentBuild.result} \
-                  Job Duration: ${currentBuild.duration}",
-        room: '942680',
-        notify: false,
-        sendAs: 'New-Jenkins',
-        server: 'api.hipchat.com',
-        v2enabled: false
-      )
-    }
+    hipchatSend (
+      color: 'GREEN',
+      credentialId: 'jenkins-hipchat-token',
+      message: "Job Name: ${JOB_BASE_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br /> \
+                Job Status: ${currentBuild.result} <br />\
+                Job Duration: ${currentBuild.duration}",
+      room: '942680',
+      notify: false,
+      sendAs: 'New-Jenkins',
+      server: 'api.hipchat.com',
+      v2enabled: false
+    )
   }
 }
