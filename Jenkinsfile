@@ -24,6 +24,7 @@ node {
       stage('pre-build') {
         // Verifying docker is up and running
         sh 'docker --version && docker images'
+        sh 'foo'
       }
       stage("build") {
         // Building Docker Image
@@ -45,7 +46,7 @@ node {
     hipchatSend (
       color: 'GREEN',
       credentialId: 'jenkins-hipchat-token',
-      message: "Job Name: ${JOB_BASE_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br /> \
+      message: "Job Name: ${JOB_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br /> \
                 Job Status: ${currentBuild.result} <br />\
                 Job Duration: ${currentBuild.duration}",
       room: '942680',
