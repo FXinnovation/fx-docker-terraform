@@ -24,6 +24,10 @@ node {
       stage('pre-build') {
         // Verifying docker is up and running
         sh 'docker --version && docker images'
+        sh 'env > env.txt' 
+        for (String i : readFile('env.txt').split("\r?\n")) {
+          println i
+        }
       }
       stage("build") {
         // Building Docker Image
@@ -37,7 +41,6 @@ node {
         // Testing Image Works
         sh "docker run ${dockerhub_repo}:${tag_id} version"
         sh "docker inspect ${dockerhub_repo}:${tag_id}"
-        sh "foo bar titi"
       }
       stage("notify") {
         hipchatSend (
