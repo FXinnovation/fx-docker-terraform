@@ -24,7 +24,7 @@ node {
       stage('pre-build') {
         // Verifying docker is up and running
         sh 'docker --version && docker images'
-        sh 'env > env.txt' 
+        sh 'scm > env.txt' 
         for (String i : readFile('env.txt').split("\r?\n")) {
           println i
         }
@@ -46,7 +46,7 @@ node {
         hipchatSend (
           color: 'GREEN',
           credentialId: 'jenkins-hipchat-token',
-          message: "Job Success: ${JOB_NAME} (<a href=\"${JOB_URL}\">Open</a>)",
+          message: "Job Success: ${JOB_NAME} (<a href=\"${BUILD_URL}\">Open</a>)",
           room: '942680',
           notify: false,
           sendAs: 'New-Jenkins',
@@ -59,7 +59,7 @@ node {
     hipchatSend (
       color: 'RED',
       credentialId: 'jenkins-hipchat-token',
-      message: "Job Failed: ${JOB_NAME} (<a href=\"${JOB_URL}\">Open</a>)<br />Error:<br /><pre>${error}</pre>",
+      message: "Job Failed: ${JOB_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br />Error:<br /><pre>${error}</pre>",
       room: '942680',
       notify: true,
       sendAs: 'New-Jenkins',
