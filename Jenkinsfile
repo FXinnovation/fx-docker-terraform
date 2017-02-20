@@ -2,6 +2,7 @@ node {
   result="SUCCESS"
   color="GREEN"
   notify=false
+  message="No special message"
   try {
     dockerhub_repo = 'fxinnovation/terraform'
     ansiColor('xterm') {
@@ -46,18 +47,22 @@ node {
     result="FAILED"
     color="RED"
     notify=true
+    message=error
     throw (error)
   }finally {
-    hipchatSend (
-      color: color,
-      credentialId: 'jenkins-hipchat-token',
-      message: "Job Name: ${JOB_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br /> \
-                Job Status: ${result} <br />",
-      room: '942680',
-      notify: notify,
-      sendAs: 'New-Jenkins',
-      server: 'api.hipchat.com',
-      v2enabled: false
-    )
+    stage("notify"){
+      hipchatSend (
+        color: color,
+        credentialId: 'jenkins-hipchat-token',
+        message: "Job Name: ${JOB_NAME} (<a href=\"${BUILD_URL}\">Open</a>)<br /> \
+                  Job Status: ${result} <br /> \
+                  Job Message: <br /><pre>message</pre>",
+        room: '942680',
+        notify: notify,
+        sendAs: 'New-Jenkins',
+        server: 'api.hipchat.com',
+        v2enabled: false
+      )
+    }
   }
 }
