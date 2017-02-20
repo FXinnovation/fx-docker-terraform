@@ -27,7 +27,6 @@ node {
       stage('pre-build') {
         // Verifying docker is up and running
         sh 'docker --version && docker images'
-        sh 'foo'
       }
       stage("build") {
         // Building Docker Image
