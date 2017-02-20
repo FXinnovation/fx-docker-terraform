@@ -42,7 +42,7 @@ node {
         hipchatSend (
           color: 'GREEN',
           credentialId: 'jenkins-hipchat-token',
-          message: "Job Success: ${JOB_NAME}",
+          message: "Job Success: ${JOB_NAME} (<a href=\"${JOB_URL}\">Open</a>)",
           room: '942680',
           notify: false,
           sendAs: 'New-Jenkins',
