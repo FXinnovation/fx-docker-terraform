@@ -56,7 +56,7 @@ node {
     hipchatSend (
       color: 'RED',
       credentialId: 'jenkins-hipchat-token',
-      message: "Job Failed: ${JOB_NAME} (<a href=\"${JOB_URL}\">Open</a>)<br />Error:<br />${error}",
+      message: "Job Failed: ${JOB_NAME} (<a href=\"${JOB_URL}\">Open</a>)<br />Error:<br /><pre>${error}</pre>",
       room: '942680',
       notify: true,
       sendAs: 'New-Jenkins',
