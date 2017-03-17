@@ -17,4 +17,5 @@ apk del curl
 ###
 # Installing ca-certificates as dependency of terraform
 ###
-apk add --no-cache ca-certificates
+apk add --no-cache \
+  ca-certificates=${CACERTIFICATES_VERSION}
