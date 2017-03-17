@@ -1,6 +1,7 @@
 FROM alpine:3.5
 
-ENV TERRAFORM_VERSION=0.9.0
+ENV TERRAFORM_VERSION=0.9.0 \
+    CACERTIFICATES_VERSION=20161130-r0
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -26,6 +27,7 @@ LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.vendor"="FXinnovation" \
       "org.label-schema.schema-version"="1.0.0-rc.1" \
       "org.label-schema.applications.terraform.version"=$TERRAFORM_VERSION \
+      "org.label-schema.applications.ca-certificates.version"=$CACERTIFICATES_VERSION \
       "org.label-schema.vcs-ref"=$VCS_REF \
       "org.label-schema.version"=$VERSION \
       "org.label-schema.build-date"=$BUILD_DATE \
