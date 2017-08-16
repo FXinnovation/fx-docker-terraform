@@ -41,6 +41,7 @@ node {
         // Testing Image Works
         sh "docker run ${dockerhub_repo}:${tag_id} version"
         sh "docker run --entrypoint=git ${dockerhub_repo}:${tag_id} version"
+        sh "docker run --entrypoint=ssh ${dockerhub_repo}:${tag_id} -V"
         sh "docker inspect ${dockerhub_repo}:${tag_id}"
         message = "Docker build is successfull"
       }
