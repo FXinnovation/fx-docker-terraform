@@ -27,7 +27,7 @@ node {
         branch_name = sh(
           returnStdout: true,
           script: 'echo "$BRANCH_NAME"'
-        )
+        ).trim()
       }
       stage('pre-build') {
         // Verifying docker is up and running
