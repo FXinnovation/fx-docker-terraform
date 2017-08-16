@@ -49,15 +49,6 @@ node {
         sh "docker inspect ${dockerhub_repo}:${tag_id}"
         message = "Docker build is successfull"
       }
-      stage("publish") {
-        println branch_name
-        if ( branch_name == "master" ){
-          sh "docker tag ${dockerhub_repo}:${tag_id} ${dockerhub_repo}:${branch_name}"
-          sh "docker push ${dockerhub_repo}:${branch_name}"
-        }else{
-          println "This is not on master, notpush image"
-        }
-      }
     }
   }catch (error){
     result="FAILED"
