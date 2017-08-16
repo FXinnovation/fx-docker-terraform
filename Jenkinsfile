@@ -40,7 +40,7 @@ node {
       stage("test") {
         // Testing Image Works
         sh "docker run ${dockerhub_repo}:${tag_id} version"
-        sh "docker run --entrypoint=sh ${dockerhub_repo}:${tag_id} git version"
+        sh "docker run --entrypoint=git ${dockerhub_repo}:${tag_id} version"
         sh "docker inspect ${dockerhub_repo}:${tag_id}"
         message = "Docker build is successfull"
       }
