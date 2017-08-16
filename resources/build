@@ -18,4 +18,6 @@ apk del curl
 # Installing ca-certificates as dependency of terraform
 ###
 apk add --no-cache \
-  ca-certificates=${CACERTIFICATES_VERSION}
+  ca-certificates=${CACERTIFICATES_VERSION} \
+  git=${GIT_VERSION} \
+  openssh=${OPENSSH_VERSION}

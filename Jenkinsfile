@@ -24,6 +24,10 @@ node {
           returnStdout: true,
           script: "git config --get remote.origin.url"
         ).trim()
+        branch_name = sh(
+          returnStdout: true,
+          script: "echo \$BRANCH_NAME"
+        )
       }
       stage('pre-build') {
         // Verifying docker is up and running
@@ -40,8 +44,18 @@ node {
       stage("test") {
         // Testing Image Works
         sh "docker run ${dockerhub_repo}:${tag_id} version"
+        sh "docker run --entrypoint=git ${dockerhub_repo}:${tag_id} version"
+        sh "docker run --entrypoint=ssh ${dockerhub_repo}:${tag_id} -V"
         sh "docker inspect ${dockerhub_repo}:${tag_id}"
         message = "Docker build is successfull"
+      }
+      stage("publish") {
+        if ( branch_name == "master" ){
+          sh "docker tag ${dockerhub_repo}:${tag_id} ${dockerhub_repo}:${branch_name}"
+          sh "docker push ${dockerhub_repo}:${branch_name}"
+        }else{
+          println "This is not on master, notpush image"
+        }
       }
     }
   }catch (error){
