@@ -50,7 +50,7 @@ node {
         message = "Docker build is successfull"
       }
       stage("publish") {
-        if ( branch_name == "master" )
+        if ( branch_name == "master" ){
           sh "docker tag ${dockerhub_repo}:${tag_id} ${dockerhub_repo}:${branch_name}"
           sh "docker push ${dockerhub_repo}:${branch_name}"
         }else{
