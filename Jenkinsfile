@@ -26,7 +26,7 @@ node {
         ).trim()
         branch_name = sh(
           returnStdout: true,
-          script: "echo \$BRANCH_NAME"
+          script: 'echo "$BRANCH_NAME"'
         )
       }
       stage('pre-build') {
@@ -50,6 +50,7 @@ node {
         message = "Docker build is successfull"
       }
       stage("publish") {
+        println branch_name
         if ( branch_name == "master" ){
           sh "docker tag ${dockerhub_repo}:${tag_id} ${dockerhub_repo}:${branch_name}"
           sh "docker push ${dockerhub_repo}:${branch_name}"
