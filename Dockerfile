@@ -21,7 +21,8 @@ RUN /resources/build && rm -rf /resources
 
 WORKDIR /data
 
-ENTRYPOINT ["/bin/terraform"]
+ADD ./docker-entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.name"="terraform" \
