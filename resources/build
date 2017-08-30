@@ -1,8 +1,6 @@
 #!/bin/sh
 set -x -eo pipefail
 
-export TF_PLUGINS_DIR=/usr/lib/custom-terraform-plugins
-
 ###
 # Adding curl
 ###
