@@ -22,7 +22,7 @@ RUN /resources/build && rm -rf /resources
 
 WORKDIR /data
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["terraform"]
 
 LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.name"="terraform" \

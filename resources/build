@@ -38,9 +38,6 @@ curl \
   > terraform-provider-terraform_${TERRAFORM_PROVIDER_TERRAFORM_VERSION}_linux_amd64.zip
 unzip terraform-provider-terraform_${TERRAFORM_PROVIDER_TERRAFORM_VERSION}_linux_amd64.zip -d ${TF_PLUGINS_DIR}
 
-# Moving entrypoint in place
-mv /resources/entrypoint.sh /usr/local/bin/entrypoint.sh
-
 ###
 # Cleaning image
 ###
