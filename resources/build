@@ -33,6 +33,9 @@ curl \
   > terraform-provider-google_${TERRAFORM_PROVIDER_AZURE_VERSION}_linux_amd64.zip
 unzip terraform-provider-google_${TERRAFORM_PROVIDER_AZURE_VERSION}_linux_amd64.zip -d ${TF_PLUGINS_DIR}
 
+# Moving entrypoint in place
+mv /resources/entrypoint.sh /usr/local/bin/entrypoint.sh
+
 ###
 # Cleaning image
 ###
