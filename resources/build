@@ -11,42 +11,15 @@ apk add --no-cache curl
 # Installing terraform and it's providers
 ###
 
-mkdir -p ${TF_PLUGINS_DIR}
+curl -sSLo /resources/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+  https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
-curl \
-  https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
-  > terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin
-
-curl \
-  https://releases.hashicorp.com/terraform-provider-aws/${TERRAFORM_PROVIDER_AWS_VERSION}/terraform-provider-aws_${TERRAFORM_PROVIDER_AWS_VERSION}_linux_amd64.zip \
-  > terraform-provider-aws_${TERRAFORM_PROVIDER_AWS_VERSION}_linux_amd64.zip
-unzip terraform-provider-aws_${TERRAFORM_PROVIDER_AWS_VERSION}_linux_amd64.zip -d ${TF_PLUGINS_DIR}
-
-curl \
-  https://releases.hashicorp.com/terraform-provider-google/${TERRAFORM_PROVIDER_GOOGLE_VERSION}/terraform-provider-google_${TERRAFORM_PROVIDER_GOOGLE_VERSION}_linux_amd64.zip \
-  > terraform-provider-google_${TERRAFORM_PROVIDER_GOOGLE_VERSION}_linux_amd64.zip
-unzip terraform-provider-google_${TERRAFORM_PROVIDER_GOOGLE_VERSION}_linux_amd64.zip -d ${TF_PLUGINS_DIR}
-
-curl \
-  https://releases.hashicorp.com/terraform-provider-azure/${TERRAFORM_PROVIDER_AZURE_VERSION}/terraform-provider-azure_${TERRAFORM_PROVIDER_AZURE_VERSION}_linux_amd64.zip \
-  > terraform-provider-azure_${TERRAFORM_PROVIDER_AZURE_VERSION}_linux_amd64.zip
-unzip terraform-provider-azure_${TERRAFORM_PROVIDER_AZURE_VERSION}_linux_amd64.zip -d ${TF_PLUGINS_DIR}
-
-curl \
-  https://releases.hashicorp.com/terraform-provider-terraform/${TERRAFORM_PROVIDER_TERRAFORM_VERSION}/terraform-provider-terraform_${TERRAFORM_PROVIDER_TERRAFORM_VERSION}_linux_amd64.zip \
-  > terraform-provider-terraform_${TERRAFORM_PROVIDER_TERRAFORM_VERSION}_linux_amd64.zip
-unzip terraform-provider-terraform_${TERRAFORM_PROVIDER_TERRAFORM_VERSION}_linux_amd64.zip -d ${TF_PLUGINS_DIR}
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin
 
 ###
 # Cleaning image
 ###
 
-rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-rm -f terraform-provider-aws_${TERRAFORM_PROVIDER_AWS_VERSION}_linux_amd64.zip
-rm -f terraform-provider-google_${TERRAFORM_PROVIDER_GOOGLE_VERSION}_linux_amd64.zip
-rm -f terraform-provider-azure_${TERRAFORM_PROVIDER_AZURE_VERSION}_linux_amd64.zip
-rm -f terraform-provider-terraform_${TERRAFORM_PROVIDER_AZURE_VERSION}_linux_amd64.zip
 apk del curl
 
 ###
