@@ -11,7 +11,7 @@ apk add --no-cache curl
 # Installing terraform and it's providers
 ###
 
-curl -sSLo /resources/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+curl -sSLo /resources/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin
