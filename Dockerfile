@@ -22,7 +22,7 @@ ENTRYPOINT ["terraform"]
 LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.name"="terraform" \
       "org.label-schema.base-image.name"="docker.io/library/alpine" \
-      "org.label-schema.base-image.version"="3.6" \
+      "org.label-schema.base-image.version"="3.8" \
       "org.label-schema.description"="Terrform in a container" \
       "org.label-schema.url"="https://www.terraform.io" \
       "org.label-schema.vcs-url"="https://bitbucket.org/fxadmin/public-common-docker-terraform" \
