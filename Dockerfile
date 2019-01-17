@@ -1,9 +1,9 @@
-FROM alpine:3.6
+FROM alpine:3.8
 
-ENV TERRAFORM_VERSION=0.10.7 \
-    CACERTIFICATES_VERSION=20161130-r2 \
-    GIT_VERSION=2.13.5-r0 \
-    OPENSSH_VERSION=7.5_p1-r1
+ENV TERRAFORM_VERSION=0.11.11 \
+    CACERTIFICATES_VERSION=20171114-r3 \
+    GIT_VERSION=2.18.1-r0 \
+    OPENSSH_VERSION=7.7_p1-r3
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -22,7 +22,7 @@ ENTRYPOINT ["terraform"]
 LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.name"="terraform" \
       "org.label-schema.base-image.name"="docker.io/library/alpine" \
-      "org.label-schema.base-image.version"="3.6" \
+      "org.label-schema.base-image.version"="3.8" \
       "org.label-schema.description"="Terrform in a container" \
       "org.label-schema.url"="https://www.terraform.io" \
       "org.label-schema.vcs-url"="https://bitbucket.org/fxadmin/public-common-docker-terraform" \
