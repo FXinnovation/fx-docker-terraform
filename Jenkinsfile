@@ -1,4 +1,4 @@
-fx_docker_image(
-  imageName: 'fxinnovation/terraform'
+fxDockerImage(
+  image: 'terraform',
+  pushLatest: true
 )
-
