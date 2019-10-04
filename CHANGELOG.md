@@ -2,6 +2,8 @@
 2.9.0 / 2019-10-04
 ==================
 
+  * Add some more comments and author file
+  * Add changelog file with full history
   * Pin Terraform to 0.12.9
 
 2.8.0 / 2019-09-09
