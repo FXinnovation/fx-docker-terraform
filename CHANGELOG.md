@@ -2,6 +2,7 @@
 3.0.0 / 2019-10-29
 ==================
 
+  * refactor: Maintaining package versions
   * breaking: Set docker as base image
 
 2.11.0 / 2019-10-18
