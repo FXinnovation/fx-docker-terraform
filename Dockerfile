@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM docker:19.03.4
 
 ENV TERRAFORM_VERSION=0.12.12 \
     CACERTIFICATES_VERSION=20190108-r0 \
@@ -21,8 +21,8 @@ ENTRYPOINT ["terraform"]
 
 LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.name"="terraform" \
-      "org.label-schema.base-image.name"="docker.io/library/alpine" \
-      "org.label-schema.base-image.version"="3.9" \
+      "org.label-schema.base-image.name"="docker.io/library/docker" \
+      "org.label-schema.base-image.version"="19.03.4" \
       "org.label-schema.description"="Terrform in a container" \
       "org.label-schema.url"="https://www.terraform.io" \
       "org.label-schema.vcs-url"="https://bitbucket.org/fxadmin/public-common-docker-terraform" \
@@ -31,6 +31,7 @@ LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.applications.terraform.version"=$TERRAFORM_VERSION \
       "org.label-schema.applications.ca-certificates.version"=$CACERTIFICATES_VERSION \
       "org.label-schema.applications.git.version"=$GIT_VERSION \
+      "org.label-schema.applications.docker.version"="19.03.4" \
       "org.label-schema.applications.openssh.version"=$OPENSSH_VERSION \
       "org.label-schema.vcs-ref"=$VCS_REF \
       "org.label-schema.version"=$VERSION \
