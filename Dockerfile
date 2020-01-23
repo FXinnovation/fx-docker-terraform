@@ -1,6 +1,6 @@
-FROM docker:19.03.4
+FROM docker:19.03.5
 
-ENV TERRAFORM_VERSION=0.12.19 \
+ENV TERRAFORM_VERSION=0.12.20 \
     CACERTIFICATES_VERSION=20190108-r0 \
     GIT_VERSION=2.22.2-r0 \
     OPENSSH_VERSION=8.1_p1-r0
@@ -22,7 +22,7 @@ ENTRYPOINT ["terraform"]
 LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.name"="terraform" \
       "org.label-schema.base-image.name"="docker.io/library/docker" \
-      "org.label-schema.base-image.version"="19.03.4" \
+      "org.label-schema.base-image.version"="19.03.5" \
       "org.label-schema.description"="Terrform in a container" \
       "org.label-schema.url"="https://www.terraform.io" \
       "org.label-schema.vcs-url"="https://bitbucket.org/fxadmin/public-common-docker-terraform" \
