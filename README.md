@@ -18,9 +18,3 @@ If you have comments or detect an issue, please be advised we don't check the do
 
 ## Contributions
 Contributions are welcome.
-
-### CHANGELOG.md
-Our changelog file is maintained by the `git changelog` command. This command is made available when installing `git-extras`.
-
-### Authors
-Our author file is maintained by the `git authors` command. This command is made available when installing `git-extras`.
