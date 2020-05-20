@@ -1,7 +1,9 @@
 3.7.0
 =====
 
-  * Pin terraform to 0.12.25
+  * tech: pin terraform to 0.12.25
+  * doc: add LICENSE file
+  * doc: remove AUTHOR file
 
 3.6.0 / 2020-03-25
 ==================
