@@ -18,3 +18,6 @@ If you have comments or detect an issue, please be advised we don't check the do
 
 ## Contributions
 Contributions are welcome.
+
+### CHANGELOG.md
+To help you write the CHANGELOG.md, your can use the `git changelog` command. This command is made available when installing `git-extras`.
