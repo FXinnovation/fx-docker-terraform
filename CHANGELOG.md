@@ -1,7 +1,7 @@
 3.7.0
 =====
 
-  * tech: pin terraform to 0.12.25
+  * maintenance: pin terraform to 0.12.25
   * doc: add LICENSE file
   * doc: remove AUTHOR file
 
