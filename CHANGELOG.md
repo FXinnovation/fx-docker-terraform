@@ -1,3 +1,8 @@
+3.8.0
+=====
+
+  * maintenance: Pin terraform to 0.12.26
+
 3.7.0
 =====
 
