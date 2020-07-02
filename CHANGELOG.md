@@ -1,3 +1,10 @@
+3.9.0
+=====
+
+  * maintenance: pin terraform to 0.12.27
+  * maintenance: pin docker image to 19.03.12
+  * maintenance: pin other dependencies
+
 3.8.0
 =====
 
