@@ -1,3 +1,9 @@
+3.12.0
+======
+
+  * maintenance: Pin terraform to 0.13.1
+  * maintenance: Pins pre-commit-hooks to 3.2.0
+
 3.11.0
 ======
 
