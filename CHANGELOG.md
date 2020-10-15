@@ -1,4 +1,4 @@
-3.13.0
+3.14.0
 ======
 
   * maintenance: Pin terraform to 0.13.4
