@@ -1,6 +1,7 @@
 3.15.0
 ======
 
+  * maintenance: Pin openssh to 8.3_p1-r1
   * maintenance: Pin terraform to 0.14.4
 
 3.14.0
