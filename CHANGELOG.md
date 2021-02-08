@@ -1,3 +1,8 @@
+3.16.0
+======
+
+  * chore: bump pre-commit hooks
+
 3.15.0
 ======
 
