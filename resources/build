@@ -16,6 +16,8 @@ curl -sSLo /resources/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
 
 unzip /resources/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin
 
+/usr/local/bin/terraform version
+
 ###
 # Cleaning image
 ###
