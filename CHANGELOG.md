@@ -1,6 +1,7 @@
 3.16.0
 ======
 
+  * maintenance: Pin terraform to 0.14.6
   * chore: bump pre-commit hooks
 
 3.15.0
