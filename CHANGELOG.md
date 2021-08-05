@@ -1,15 +1,3 @@
-4.1.0
-======
-
-  * (BREAKING) maintenance: pins terraform to 1.0.3.
-  * maintenance: pins pre-commit-hooks to v4.0.1.
-  * maintenance: pins docker base image to 20.10.7.
-  * maintenance: pins git to 2.30.2-r0.
-  * maintenance: pins ca-certificates to 20191127-r5.
-  * maintenance: pins openssh to 8.4_p1-r3.
-  * maintenance: update org's base-image.version to 20.10.7.
-  * maintenance: update org's applications.docker.version to 20.10.7.
-
 3.16.0
 ======
 
