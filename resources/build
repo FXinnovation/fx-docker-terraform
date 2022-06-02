@@ -8,6 +8,12 @@ set -x -eo pipefail
 apk add --no-cache curl
 
 ###
+# Adding aws cli (version 1)
+###
+
+apk add --no-cache aws-cli
+
+###
 # Installing terraform and it's providers
 ###
 
@@ -29,9 +35,9 @@ apk del curl
 ###
 
 apk add --no-cache \
-  ca-certificates=${CACERTIFICATES_VERSION} \
-  git=${GIT_VERSION} \
-  openssh=${OPENSSH_VERSION}
+  ca-certificates \
+  git \
+  openssh
 
 ###
 # CIS Hardening
