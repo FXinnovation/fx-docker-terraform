@@ -14,6 +14,12 @@ apk add --no-cache curl
 apk add --no-cache aws-cli
 
 ###
+# Adding python 3
+###
+
+apk add --no-cache python3 py3-pip
+
+###
 # Installing terraform and it's providers
 ###
 
